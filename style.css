@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center; 
+}
+.header__logo {
+    margin: 0.83em; /* отступ вокруг объекта*/
+    margin-bottom: 0 !important; /* отступ снизу объекта*/
+    max-height: 90px; /* максимальная высота объекта*/
+}
+.header__paragraph {
+    width: 600px; /* ширина объекта*/
+    /*margin: 10px;  отступ вокруг объекта*/
+    /*padding: 10px;  поле вокруг объекта*/
+    color: #0088cc /*#b41818*/; /* цвет текста*/
+    text-transform:  uppercase;
+    text-align: center;
+}
