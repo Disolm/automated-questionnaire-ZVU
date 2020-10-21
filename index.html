@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="shortcut icon" type="image/x-icon" href="http://vorpostnsk.ru/favicon.ico"> -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="http://vorpostnsk.ru/favicon.ico"> -->
     <link rel="shortcut icon" type="image/x-icon" href="https://sgep.ru/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <title>ОЛ-ЗВУ|Форпост</title>
@@ -13,25 +13,104 @@
 <body class='page'>
     <header class='header page__header'>
         <!-- <img class='header__logo' src="http://vorpostnsk.ru/logo.png" alt="ФОРПОСТ"> -->
-        <img class='header__logo' src="https://sgep.ru/upload/medialibrary/0c9/0c91215ca74fab2cd7efc41717cff4cb.png" alt="СГЭП">
+        <img class='header__logo' src="https://sgep.ru/upload/medialibrary/0c9/0c91215ca74fab2cd7efc41717cff4cb.png"
+            alt="СГЭП">
         <div class='header__paragraph'>
             <h2>Автоматизированный опросный лист <br> зарядно-выпрямительной системы <br> ФОРПОСТ от НТЦ СГЭП</h2>
         </div>
     </header>
-    
-    <article class='article page__article'>
+    <main class='main page__main'>
         <div class='container'>
-            <div class='search-form'>
-
-                <input class='input'>
-
-
-                <button class='button'>Найти</button>
-            </div>
+            <form class='search-form'>
+                <div class="left"><span>Структура системы:</span>
+                    <select name='text' id='structureSystem' required tabindex='1'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='structureMain'>Основная</option>
+                        <option value='structureMainTail'>Основная + хвост</option>
+                        <option value='structureTail'>Хвостовая</option>
+                    </select>
+                </div>
+                <div class="left"><span>Количество комплектов ЗВУ в системе:</span>
+                    <select name='text' id='amountSystemZVU' required tabindex='2'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='amountZVU1'>1</option>
+                        <option value='amountZVU2'>2</option>
+                        <option value='amountZVU3'>3</option>
+                    </select>
+                </div>
+                <div class="left"><span>Тип охлаждения:</span>
+                    <select name='text' id='typeCooling' required tabindex='3'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='typeCoolingActive'>Принудительное</option>
+                        <option value='typeCoolingPassive'>Естественное</option>
+                    </select>
+                </div>
+                <div class="left"><span>Питающее напряжение:</span>
+                    <select name='text' id='voltageInput' required tabindex='4'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='voltageInput3x380NPE'>~3х380В 50Гц с нейтралью</option>
+                        <option value='voltageInput3x220PE'>~3х220В 50Гц без нейтрали</option>
+                        <option value='voltageInput220NPE'>~220В 50Гц</option>
+                        <option value='voltageInput220DC'>=220В</option>
+                    </select><span> <output name='voltageInputRange'></output></span>
+                </div>
+                <div class="left"><span>Номинальное выходное напряжение ЗВУ</span>
+                    <select name='text' id='voltageOutput' required tabindex='5'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='voltageOutput500V'>=480В</option>
+                        <option value='voltageOutput240V'>=240В</option>
+                        <option value='voltageOutput220V'>=220В</option>
+                        <option value='voltageOutput110V'>=110В</option>
+                        <option value='voltageOutput60V'>=60В</option>
+                        <option value='voltageOutput48V'>=48В</option>
+                        <option value='voltageOutput36V'>=36В</option>
+                        <option value='voltageOutput24V'>=24В</option>
+                        <option value='voltageOutput12V'>=12В</option>
+                    </select><span> <output name='voltageOutputRange'></output></span>
+                </div>
+                <div class="left"><span>Номинальный выходной ток ЗВУ</span>
+                    <input id='loadCurrent' type='number' required min='1' max='45000' step='1' size='6' tabindex='6'>
+                    </select><span>А <output name='loadCurrentRange'></output></span>
+                </div>
+                <div class="left"><span>Заряд АКБ повышенным напряжением 2.45-2.65В/Эл:</span>
+                    <select name='text' id='voltageOutput' required tabindex='7'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='BustVoltageOutputTrue'>Да</option>
+                        <option value='BustVoltageOutputFalse'>Нет</option>
+                    </select><span> <output name='voltageOutputBustRange'></output></span>
+                </div>
+                <div class="left"><span>Минимальный ток заряда повышенным напряжением</span>
+                    <input id='minLoadCurrent' type='number' required min='1' max='300' step='1' size='6' tabindex='8'>
+                    </select><span>А <output name='minLoadCurrentRange'></output></span>
+                </div>
+                <div class="left"><span>Ном напряжение элемента основной группы АКБ:</span>
+                    <select name='text' id='voltageAKB' required tabindex='9'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='voltageAKB12'>12В</option>
+                        <option value='voltageAKB2'>2В</option>
+                    </select>
+                </div>
+                <div class="left"><span>Кол-во элементов основной группы АКБ:</span>
+                    <input id='amountAKB' type='number' required min='1' max='40' step='1' size='6' tabindex='10'>
+                    </select><span>шт <output name='amountAKBRange'></output></span>
+                    </select>
+                </div>
+                 <div class="left"><span>Номинальная ёмкость одной группы АКБ:</span>
+                    <input id='capacityAKB' type='number' required min='1' max='10000' step='1' size='6' tabindex='10'>
+                    </select><span>Ач <output name='capacityAKBRange'></output></span>
+                    </select>
+                </div>
+                <button class='button' id='buttonResult' type='submit'>Найти</button>
+            </form>
         </div>
-    </article>
+    </main>
+
     <footer class='footer page__footer'>
-        <div class="title"></div>
+        <div class='requisites'>
+            ООО "НТЦ СГЭП" - системы гарантированного электропитания <br>
+            <!-- © 2020 Политика конфиденциальности 
+            Разработчик Глебский Дмитрий-->
+        </div>
     </footer>
 </body>
 
