@@ -16,12 +16,24 @@
         <img class='header__logo' src="https://sgep.ru/upload/medialibrary/0c9/0c91215ca74fab2cd7efc41717cff4cb.png"
             alt="СГЭП">
         <div class='header__paragraph'>
-            <h2>Автоматизированный опросный лист <br> зарядно-выпрямительной системы <br> ФОРПОСТ от НТЦ СГЭП</h2>
+            <h2><!--Автоматизированный --> опросный лист <br> зарядно-выпрямительной системы <br> ФОРПОСТ<!-- от НТЦ СГЭП--></h2>
         </div>
     </header>
     <main class='main page__main'>
         <div class='container'>
             <form class='search-form'>
+                <div class="left"><span>Номер опросного листа:</span>
+                    <input id='numberOL' type='text' required tabindex='0'>
+                </div>
+                <div class="left"><span>Дата заполнения:</span>
+                    <input id='dateOL' type='date' required tabindex='0'>
+                </div>
+                <div class="left"><span>Данные заказчика (ФИО, долж., эл.адр.,тел.):<br></span>
+                    <input id='dataUser' type='text' maxlength=256 size="60" aria-setsize="2" required tabindex='0'>
+                </div>
+                <div class="left"><span>Данные заказчика (организация):<br></span>
+                    <input id='dataFirm' type='text' maxlength=256 size="60" aria-setsize="2" required tabindex='0'>
+                </div>
                 <div class="left"><span>Структура системы:</span>
                     <select name='text' id='structureSystem' required tabindex='1'>
                         <option value='-1' disabled selected>-</option>
@@ -90,15 +102,75 @@
                         <option value='voltageAKB2'>2В</option>
                     </select>
                 </div>
-                <div class="left"><span>Кол-во элементов основной группы АКБ:</span>
-                    <input id='amountAKB' type='number' required min='1' max='40' step='1' size='6' tabindex='10'>
-                    </select><span>шт <output name='amountAKBRange'></output></span>
+                <div class="left"><span>Количество элементов основной группы АКБ:</span>
+                    <input id='amountElementAKB' type='number' required min='1' max='40' step='1' size='6'
+                        tabindex='10'>
+                    <span>шт <output name='amountElementAKBRange'></output></span>
+                </div>
+                <div class="left"><span>Номинальная ёмкость одной группы АКБ:</span>
+                    <input id='capacityAKB' type='number' required min='1' max='10000' step='1' size='6' tabindex='11'>
+                    <span>Ач</span>
+                </div>
+                <div class="left"><span>Количество основных групп АКБ:</span>
+                    <select name='text' id='amountElementAKB' required tabindex='12'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='1'>1гр</option>
+                        <option value='2'>2гр</option>
                     </select>
                 </div>
-                 <div class="left"><span>Номинальная ёмкость одной группы АКБ:</span>
-                    <input id='capacityAKB' type='number' required min='1' max='10000' step='1' size='6' tabindex='10'>
-                    </select><span>Ач <output name='capacityAKBRange'></output></span>
+                <br>
+                <div class="left"><span>Визуальная индикация параметров ЗВУ и АКБ на встроенном 4х строчном ЖКИ:</span>
+                    <select name='text' id='' required tabindex='13'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value=true>Да</option>
+                        <option value=false>Нет</option>
                     </select>
+                </div>
+                <div class="left"><span>Использование собственной панели оператора для визуализации и мониторинга:</span>
+                    <select name='text' id='' required tabindex='14'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value=true>Да</option>
+                        <option value=false>Нет</option>
+                    </select>
+                </div>
+                <div class="left"><span>Интерфейс передачи и обмена данных:</span>
+                    <select name='text' id='dataExchangeInterface' required tabindex='14'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value=false>Нет</option>
+                        <option value='RS485'>RS485 (ModBUS RTU)</option>
+                        <option value='RJ45'>Ethernet (SNMPv1)</option>
+                        <option value='other'>иной</option> 
+                        <input id='dataExchangeInterfaceInput' type='text' required maxlength=256 size='10' tabindex='11'>
+                    </select>
+                </div>
+                <div class="left"><span>Конструктивное исполнение контроллера УКУ:</span>
+                    <select name='text' id='' required tabindex='14'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='door'>На дверь шкафа</option>
+                        <option value='cabinet'>Внутри шкафа</option>
+                    </select>
+                </div>
+                <div class="left"><span>Степень защиты контроллера с лицевой стороны:</span>
+                    <select name='text' id='' required tabindex='14'>
+                        <option value='-1' disabled selected>-</option>
+                        <option value='ip20'>IP20</option>
+                        <option value='ip41'>IP41</option>
+                    </select>
+                </div>
+                <div class="left"><span>Длина шлейфа УКУ (14+10 pin):</span>
+                    <input id='' type='number' required value=2 min='1' max='10' step='1' size='6' tabindex='11'>
+                    <span>м</span>
+                </div>
+                <div class="left"><span>Длина выносного датчика температуры АКБ:</span>
+                    <input id='' type='number' required value=3 min='1' max='10' step='1' size='6' tabindex='11'>
+                    <span>м</span>
+                </div>
+                <div class="left"><span>Длина шлейфа CAN (10 pin) до выносного модуля измерения тока АКБ:</span>
+                    <input id='' type='number' required value=2 min='1' max='10' step='1' size='6' tabindex='11'>
+                    <span>м</span> <br>
+                    <span>"В комплект поставки входит переходная плата CAN EDG и шлейф CAN (10 pin) 1м (2шт, 1-комплект). <br>
+                        Соединительный кабель между переходными платами заказчик должен организовать своими средствами."		
+                    </span>
                 </div>
                 <button class='button' id='buttonResult' type='submit'>Найти</button>
             </form>
